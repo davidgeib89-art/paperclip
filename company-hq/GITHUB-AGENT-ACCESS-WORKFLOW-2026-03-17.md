@@ -9,11 +9,13 @@
 ## 1) Current Repo & Worktree Topology
 
 ### Main Repository
+
 - **Repo:** `https://github.com/davidgeib89-art/paperclip`
   - Remotes: `origin` (davidgeib89-art fork) and `upstream` (paperclipai)
   - Main branch: `master` (production baseline)
 
 ### Working Directory Structure
+
 ```
 ~/DGDH/
   repos/paperclip-main         [main repo, branch: master]
@@ -24,22 +26,25 @@
 ```
 
 ### Worktree Assignments (As Of 2026-03-17)
-| Worktree | Branch | Remote | Purpose |
-|----------|--------|--------|---------|
-| paperclip-codex | **codex-work** | `origin/codex-work` | **PRIMARY: Active DGDH work** |
-| paperclip-claude | claude-work | `origin/claude-work` | Secondary |
-| paperclip-gemini | gemini-work | `origin/gemini-work` | Secondary |
+
+| Worktree         | Branch         | Remote               | Purpose                       |
+| ---------------- | -------------- | -------------------- | ----------------------------- |
+| paperclip-codex  | **codex-work** | `origin/codex-work`  | **PRIMARY: Active DGDH work** |
+| paperclip-claude | claude-work    | `origin/claude-work` | Secondary                     |
+| paperclip-gemini | gemini-work    | `origin/gemini-work` | Secondary                     |
 
 ---
 
 ## 2) Official Active Worktree: codex-work Branch
 
 ### GitHub Visibility
+
 - **Remote branch:** `origin/codex-work`
 - **Full URL:** `https://github.com/davidgeib89-art/paperclip/tree/codex-work`
 - **Status:** Tracking and pushed to GitHub as of commit `1b941b09`
 
 ### Current Head
+
 - **Commit:** `1b941b09` (chore: add DGDH governance board memo and re-sync state for agent review)
 - **Timestamp:** 2026-03-17
 - **Key files added:**
@@ -47,6 +52,7 @@
   - `company-hq/DGDH-RE-SYNC-STATE-2026-03-17.md` (architecture snapshot)
 
 ### How ChatGPT Agent Mode Connects
+
 1. **Direct link:** `https://github.com/davidgeib89-art/paperclip/tree/codex-work`
 2. **Agent instruction:** "Review the live codebase at `origin/codex-work` in the Paperclip repository"
 3. **File discovery:** Agent can browse all files in `/company-hq/`, `/packages/`, `/server/`, etc. at this branch state
@@ -57,17 +63,20 @@
 ## 3) Review Entry Point for Agents
 
 ### Draft PR (When Needed)
+
 - **Will be created as:** `codex-work` → `master` (draft, for tracking and review)
 - **Purpose:** Central place for agent-mode review comments and decision tracking
 - **Status:** To be created on demand (not auto-created; manual trigger when review checkpoint reached)
 - **Link format:** Will be pinned in agent instructions once created
 
 ### Without PR: Direct Branch Review
+
 - **Current approach:** Agents review `codex-work` branch directly via GitHub tree
 - **Sufficient for:** Code discovery, artifact reading, decision audit
 - **No PR needed until:** Ready to propose integration back to `master`
 
 ### Artifacts Always Accessible on codex-work
+
 - **Governance docs:** `company-hq/` (Constitution, Budget, Autonomy, Token Strategy, Board Memo, Re-Sync State)
 - **Source code:** All packages, server, adapters, skills
 - **Tests & configs:** Full codebase view, including test suites and tsconfig
@@ -88,6 +97,7 @@ After major development checkpoint or sprint end:
 5. **Agent re-review:** Next agent mode session reads updated branch
 
 ### Commit Message Template
+
 ```
 chore: [SPRINT/PHASE] governance and architecture update
 
@@ -99,6 +109,7 @@ This commit establishes the canonical state for agent review.
 ```
 
 ### Example
+
 ```
 chore: PHASE-2 governance fill-ins and probe checklist
 
@@ -115,6 +126,7 @@ Ready for controlled-live probe activation (pending board GO vote).
 ## 5) What Stays Local, What Goes Remote
 
 ### Stays Local (Only In Worktree)
+
 - Temporary build artifacts (`dist/`, `node_modules/`, `.next/`, etc.)
 - Local secrets, environment files (`.env.local`, credentials)
 - IDE scratch folders (`.vscode/` workspace settings)
@@ -123,6 +135,7 @@ Ready for controlled-live probe activation (pending board GO vote).
 **Rule:** Only tracked, reviewed, and decision-affecting content gets pushed.
 
 ### Goes Remote on codex-work
+
 - Source code (`packages/`, `server/`, `skills/`, `cli/`)
 - Governance and decision documents (`company-hq/`)
 - Test suites and configurations
@@ -143,10 +156,11 @@ Ready for controlled-live probe activation (pending board GO vote).
 > **Branch:** `codex-work` (the official active development line)  
 > **Direct URL:** `https://github.com/davidgeib89-art/paperclip/tree/codex-work`  
 > **Key files to start:**
->   - `company-hq/BOARD-MEMO-PROBE-01-STATUS-2026-03-17.md` (current decision scope)
->   - `company-hq/DGDH-RE-SYNC-STATE-2026-03-17.md` (architecture snapshot)
->   - `server/src/services/prompt-shadow-gate.ts` (resolver gate logic)
->   - `packages/adapters/gemini-local/src/server/models.ts` (currently in development)
+>
+> - `company-hq/BOARD-MEMO-PROBE-01-STATUS-2026-03-17.md` (current decision scope)
+> - `company-hq/DGDH-RE-SYNC-STATE-2026-03-17.md` (architecture snapshot)
+> - `server/src/services/prompt-shadow-gate.ts` (resolver gate logic)
+> - `packages/adapters/gemini-local/src/server/models.ts` (currently in development)
 >
 > **Refresh cadence:** After major sprints or decision checkpoints, the `codex-work` branch is updated with new governance artifacts.
 >
@@ -163,6 +177,7 @@ Ready for controlled-live probe activation (pending board GO vote).
 > This ensures agents and humans always see the same canonical state.
 
 ### Examples of "Major" Checkpoints
+
 - Board memo updates or approval sign-offs
 - Resolver or gate logic changes that affect governance
 - New probe window configs or threshold sets
@@ -170,6 +185,7 @@ Ready for controlled-live probe activation (pending board GO vote).
 - Architecture decisions that affect multiple layers
 
 ### Examples of "Minor" (Can Batch or Skip)
+
 - Typo fixes or formatting
 - Internal refactoring with no external API change
 - Test-only updates
@@ -193,34 +209,39 @@ Ready for controlled-live probe activation (pending board GO vote).
 
 ## 9) Summary for Quick Reference
 
-| Item | Value |
-|------|-------|
-| **Active worktree** | `~/DGDH/worktrees/paperclip-codex` |
-| **Active branch** | `codex-work` |
-| **Remote URL** | `https://github.com/davidgeib89-art/paperclip/tree/codex-work` |
-| **Last sync** | 2026-03-17, commit `1b941b09` |
-| **Governance docs** | All in `company-hq/` |
-| **Agent access** | Direct GitHub branch + governance docs |
-| **Push rule** | After major checkpoint, commit + `git push origin codex-work` |
-| **Review entry** | `codex-work` branch directly; PR optional |
+| Item                | Value                                                          |
+| ------------------- | -------------------------------------------------------------- |
+| **Active worktree** | `~/DGDH/worktrees/paperclip-codex`                             |
+| **Active branch**   | `codex-work`                                                   |
+| **Remote URL**      | `https://github.com/davidgeib89-art/paperclip/tree/codex-work` |
+| **Last sync**       | 2026-03-17, commit `1b941b09`                                  |
+| **Governance docs** | All in `company-hq/`                                           |
+| **Agent access**    | Direct GitHub branch + governance docs                         |
+| **Push rule**       | After major checkpoint, commit + `git push origin codex-work`  |
+| **Review entry**    | `codex-work` branch directly; PR optional                      |
 
 ---
 
 ## 10) Troubleshooting
 
 ### "Agent can't see the latest files"
+
 → Check: Did you commit and push? `git log origin/codex-work` should show your commit.
 
 ### "Should I create a PR?"
+
 → Only if you're ready to propose merge back to master. For now, branch review is sufficient.
 
 ### "What if I need to sync with master?"
+
 → In the codex worktree: `git fetch origin` then `git rebase origin/master` (if needed). **But check with team first—this is a major integration action.**
 
 ### "Can other team members push to codex-work?"
+
 → Yes, if they have permission to `davidgeib89-art/paperclip`. Use the same commit + push rule.
 
 ### "What about upstream (paperclipai)?"
+
 → Keep upstream as reference/sync only. Push always goes to `origin` (your fork). Integration back to upstream is a separate, formal process (PR to paperclipai/paperclip).
 
 ---
